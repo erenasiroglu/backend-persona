@@ -29,14 +29,15 @@ exports.signup = async (req, res) => {
       success: true,
       data: {
         user: data.user,
-        message: "Kayıt başarılı. Lütfen email adresinizi doğrulayın.",
+        message:
+          "Registration successful. Please check your email for verification",
       },
     });
   } catch (error) {
     console.error("Signup error:", error);
     res.status(500).json({
       success: false,
-      error: error.message || "Kayıt işleminde bir hata oluştu",
+      error: error.message,
     });
   }
 };
@@ -62,7 +63,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({ user: data.user, session: data.session });
   } catch (error) {
-    res.status(500).json({ error: "Giriş işleminde bir hata oluştu" });
+    res.status(500).json({ error: "Login failed" });
   }
 };
 
